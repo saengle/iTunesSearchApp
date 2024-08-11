@@ -17,6 +17,7 @@
 		8E95818A2C68B0C10067E5F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E9581892C68B0C10067E5F5 /* RxSwift */; };
 		8E95818D2C68B0DF0067E5F5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E95818C2C68B0DF0067E5F5 /* SnapKit */; };
 		8E95818F2C68B1480067E5F5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8E95818E2C68B1480067E5F5 /* .gitignore */; };
+		8E9581942C68BB680067E5F5 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9581932C68BB680067E5F5 /* Tabbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8E9581712C68A16F0067E5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E9581732C68A16F0067E5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E95818E2C68B1480067E5F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8E9581932C68BB680067E5F5 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		8E9581642C68A16D0067E5F5 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
+				8E9581922C68BA130067E5F5 /* UI */,
 				8E9581652C68A16D0067E5F5 /* AppDelegate.swift */,
 				8E9581672C68A16D0067E5F5 /* SceneDelegate.swift */,
 				8E9581692C68A16D0067E5F5 /* ViewController.swift */,
@@ -73,6 +76,22 @@
 				8E9581732C68A16F0067E5F5 /* Info.plist */,
 			);
 			path = iTunes;
+			sourceTree = "<group>";
+		};
+		8E9581922C68BA130067E5F5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8E9581952C68BB9D0067E5F5 /* Search */,
+				8E9581932C68BB680067E5F5 /* Tabbar.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8E9581952C68BB9D0067E5F5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +179,7 @@
 				8E95816A2C68A16D0067E5F5 /* ViewController.swift in Sources */,
 				8E9581662C68A16D0067E5F5 /* AppDelegate.swift in Sources */,
 				8E9581682C68A16D0067E5F5 /* SceneDelegate.swift in Sources */,
+				8E9581942C68BB680067E5F5 /* Tabbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
