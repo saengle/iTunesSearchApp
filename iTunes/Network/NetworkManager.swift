@@ -19,11 +19,9 @@ class NetworkManager{
     static let shared = NetworkManager()
     private init () {}
     
-    func calliTunesData() -> Observable<MusicList> {
+    func calliTunesData(query: String) -> Observable<MusicList> {
         
-        let url = "https://itunes.apple.com/search?term=letitbe&country=kr"
-        
-        
+        let url = "https://itunes.apple.com/search?term=\(query)&country=kr"
         
         let result = Observable<MusicList>.create { observer in
             
@@ -34,7 +32,6 @@ class NetworkManager{
             
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
-                    print("??")
                     observer.onError(APIError.unknownResponse)
                     return
                 }
@@ -46,12 +43,9 @@ class NetworkManager{
                 
                 if let data = data,
                    let appData = try? JSONDecoder().decode(MusicList.self, from: data) {
-                    print("dkgk")
-                    print(appData)
                     observer.onNext(appData)
                     observer.onCompleted()
                 } else {
-                    print("error")
                     observer.onError(APIError.unknownResponse)
                 }
             }.resume()
@@ -60,30 +54,4 @@ class NetworkManager{
         return result
     }
     
-//    func callll() {
-//        let url = "https://itunes.apple.com/search?term=letitbe&country=kr"
-//            
-//            guard let url = URL(string: url) else {
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let error = error {
-//
-//                return
-//            }
-//            
-//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                return
-//            }
-//            
-//            if let data = data,
-//               let appData = try? JSONDecoder().decode(MusicList.self, from: data) {
-//                print(appData.results.self)
-//            } else {
-//                print("error!!", error?.localizedDescription)
-//
-//            }
-//        }.resume()
-//    }
 }

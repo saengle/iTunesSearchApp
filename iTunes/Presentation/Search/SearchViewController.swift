@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     let searchView = SearchView()
     let searchBar = UISearchBar()
     let disposeBag = DisposeBag()
+    let vm = SearchViewModel()
     
     override func loadView() {
         view = searchView
@@ -32,17 +33,15 @@ extension SearchViewController {
     
     private func bind() {
         
-        NetworkManager.shared.calliTunesData()
-
-        let tempData = ["안녕", "디지몬"]
+        let input = SearchViewModel.Input(searchButtonTap: self.searchBar.rx.searchButtonClicked, searchText: searchBar.rx.text.orEmpty)
         
-        let myList = BehaviorSubject(value: tempData)
-        myList.bind(to: searchView.tableView.rx.items(cellIdentifier: SearchTableViewCell.id, cellType: SearchTableViewCell.self)) { (row, element, cell) in
-            cell.appNameLabel.text = element
-            cell.setImage(imagePath: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a1/4b/f7/a14bf746-bf45-d729-f6dc-740f00d67b27/dj.mxtqktim.jpg/100x100bb.jpg")
+        let output = vm.transform(input: input)
+        
+        output.musicList.bind(to: searchView.tableView.rx.items(cellIdentifier: SearchTableViewCell.id, cellType: SearchTableViewCell.self)) { (row, element, cell) in
+            cell.appNameLabel.text = element.trackName
+            cell.setImage(imagePath: element.artworkUrl100)
         }
         .disposed(by: disposeBag)
-        
     }
     
     private func configureVC() {
