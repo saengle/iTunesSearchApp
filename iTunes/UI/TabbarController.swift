@@ -1,5 +1,5 @@
 //
-//  Tabbar.swift
+//  TabbarController.swift
 //  iTunes
 //
 //  Created by 쌩 on 8/11/24.
@@ -17,8 +17,7 @@ final class TabbarController: UITabBarController {
         
         let search = SearchViewController()
         let searchNav = UINavigationController(rootViewController: search)
-        searchNav.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass.fill"))
-        
+        searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass.fill"))
         
         setViewControllers([ searchNav], animated: true)
     }
