@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import Kingfisher
 
 class SearchTableViewCell: UITableViewCell {
     
@@ -22,14 +23,7 @@ class SearchTableViewCell: UITableViewCell {
         return label
     }()
     
-    let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemMint
-        imageView.layer.cornerRadius = 8
-        return imageView
-    }()
+    let appIconImageView = UIImageView()
     
     var disposeBag = DisposeBag()
     
@@ -52,14 +46,28 @@ class SearchTableViewCell: UITableViewCell {
         contentView.addSubview(appIconImageView)
         
         appIconImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.bottom.equalTo(contentView).inset(8)
             $0.leading.equalTo(20)
             $0.size.equalTo(60)
         }
         
         appNameLabel.snp.makeConstraints {
             $0.centerY.equalTo(appIconImageView)
-            $0.leading.equalTo(appIconImageView.snp.trailing).offset(8)
+            $0.leading.equalTo(appIconImageView.snp.trailing).offset(16)
+        }
+    }
+    func setImage(imagePath: String) {
+        if let url = URL(string: "\(String(describing: imagePath))") {
+            let processor = DownsamplingImageProcessor(size:  appIconImageView.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: CGFloat(8))
+            appIconImageView.kf.indicatorType = .activity
+            appIconImageView.kf.setImage(
+                with: url,
+                options: [.processor(processor),
+                          .scaleFactor(UIScreen.main.scale),
+                          .transition(.fade(1)),
+                          .cacheOriginalImage])
         }
     }
 }
+
