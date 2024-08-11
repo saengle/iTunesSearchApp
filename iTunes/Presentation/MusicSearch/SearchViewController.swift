@@ -7,7 +7,6 @@
 
 import UIKit
 
-import SnapKit
 import RxCocoa
 import RxSwift
 
@@ -40,9 +39,16 @@ extension SearchViewController {
         output.musicList.bind(to: searchView.tableView.rx.items(cellIdentifier: SearchTableViewCell.id, cellType: SearchTableViewCell.self)) { (row, element, cell) in
             cell.songNameLabel.text = element.trackName
             cell.artistNameLabel.text = element.artistName
-            cell.setImage(imagePath: element.artworkUrl100)
+            cell.albumImageView.setMyImage(imagePath: element.artworkUrl100)
         }
         .disposed(by: disposeBag)
+        
+        searchView.tableView.rx.modelSelected(Music.self)
+                   .subscribe(with: self) { owner, data in
+                       let vc = MusicDetailViewController()
+                       vc.titleName = data.trackName
+                       owner.navigationController?.pushViewController(vc, animated: true)
+                   }.disposed(by: disposeBag)
     }
     
     private func configureVC() {

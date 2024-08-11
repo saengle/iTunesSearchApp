@@ -8,7 +8,6 @@
 import UIKit
 
 import RxSwift
-import RxCocoa
 import SnapKit
 import Kingfisher
 
@@ -66,19 +65,6 @@ class SearchTableViewCell: UITableViewCell {
         artistNameLabel.snp.makeConstraints {
             $0.top.equalTo(songNameLabel.snp.bottom).offset(8)
             $0.leading.equalTo(albumImageView.snp.trailing).offset(16)
-        }
-    }
-    func setImage(imagePath: String) {
-        if let url = URL(string: "\(String(describing: imagePath))") {
-            let processor = DownsamplingImageProcessor(size:  albumImageView.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: CGFloat(8))
-            albumImageView.kf.indicatorType = .activity
-            albumImageView.kf.setImage(
-                with: url,
-                options: [.processor(processor),
-                          .scaleFactor(UIScreen.main.scale),
-                          .transition(.fade(1)),
-                          .cacheOriginalImage])
         }
     }
 }
