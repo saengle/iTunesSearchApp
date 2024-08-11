@@ -31,6 +31,9 @@ class SearchViewController: UIViewController {
 extension SearchViewController {
     
     private func bind() {
+        
+        NetworkManager.shared.calliTunesData()
+
         let tempData = ["안녕", "디지몬"]
         
         let myList = BehaviorSubject(value: tempData)
