@@ -17,6 +17,7 @@ class SearchView: UIView {
         super.init(frame: frame)
         configureHierachy()
         configureLayout()
+        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +29,6 @@ class SearchView: UIView {
         addSubview(tableView)
     }
     private func configureLayout() {
-        tableView.backgroundColor = .brown
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
