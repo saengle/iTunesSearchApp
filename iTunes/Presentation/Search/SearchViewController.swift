@@ -38,7 +38,8 @@ extension SearchViewController {
         let output = vm.transform(input: input)
         
         output.musicList.bind(to: searchView.tableView.rx.items(cellIdentifier: SearchTableViewCell.id, cellType: SearchTableViewCell.self)) { (row, element, cell) in
-            cell.appNameLabel.text = element.trackName
+            cell.songNameLabel.text = element.trackName
+            cell.artistNameLabel.text = element.artistName
             cell.setImage(imagePath: element.artworkUrl100)
         }
         .disposed(by: disposeBag)

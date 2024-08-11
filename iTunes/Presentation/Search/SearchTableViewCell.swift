@@ -16,14 +16,20 @@ class SearchTableViewCell: UITableViewCell {
     
     static let id = "SearchTableViewCell"
     
-    let appNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .black
-        return label
+    let songNameLabel: UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = .black
+        return lb
     }()
     
-    let appIconImageView = UIImageView()
+    let artistNameLabel: UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 14)
+        return lb
+    }()
+    
+    let albumImageView = UIImageView()
     
     var disposeBag = DisposeBag()
     
@@ -42,26 +48,32 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     private func configureCell() {
-        contentView.addSubview(appNameLabel)
-        contentView.addSubview(appIconImageView)
+        contentView.addSubview(songNameLabel)
+        contentView.addSubview(albumImageView)
+        contentView.addSubview(artistNameLabel)
         
-        appIconImageView.snp.makeConstraints {
+        albumImageView.snp.makeConstraints {
             $0.top.bottom.equalTo(contentView).inset(8)
             $0.leading.equalTo(20)
             $0.size.equalTo(60)
         }
         
-        appNameLabel.snp.makeConstraints {
-            $0.centerY.equalTo(appIconImageView)
-            $0.leading.equalTo(appIconImageView.snp.trailing).offset(16)
+        songNameLabel.snp.makeConstraints {
+            $0.top.equalTo(albumImageView).inset(8)
+            $0.leading.equalTo(albumImageView.snp.trailing).offset(16)
+        }
+        
+        artistNameLabel.snp.makeConstraints {
+            $0.top.equalTo(songNameLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(albumImageView.snp.trailing).offset(16)
         }
     }
     func setImage(imagePath: String) {
         if let url = URL(string: "\(String(describing: imagePath))") {
-            let processor = DownsamplingImageProcessor(size:  appIconImageView.bounds.size)
+            let processor = DownsamplingImageProcessor(size:  albumImageView.bounds.size)
             |> RoundCornerImageProcessor(cornerRadius: CGFloat(8))
-            appIconImageView.kf.indicatorType = .activity
-            appIconImageView.kf.setImage(
+            albumImageView.kf.indicatorType = .activity
+            albumImageView.kf.setImage(
                 with: url,
                 options: [.processor(processor),
                           .scaleFactor(UIScreen.main.scale),
