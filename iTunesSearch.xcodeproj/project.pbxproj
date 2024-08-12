@@ -27,6 +27,7 @@
 		8E9581A62C6904450067E5F5 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9581A52C6904450067E5F5 /* MusicDetailViewController.swift */; };
 		8E9581A82C69064B0067E5F5 /* MusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9581A72C69064B0067E5F5 /* MusicDetailView.swift */; };
 		8E9581AB2C6915CE0067E5F5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9581AA2C6915CE0067E5F5 /* UIImageView+Extension.swift */; };
+		8E9581B32C6A41400067E5F5 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9581B22C6A41400067E5F5 /* CommonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		8E9581A52C6904450067E5F5 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 		8E9581A72C69064B0067E5F5 /* MusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailView.swift; sourceTree = "<group>"; };
 		8E9581AA2C6915CE0067E5F5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		8E9581B22C6A41400067E5F5 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		8E9581642C68A16D0067E5F5 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
+				8E9581B12C6A41300067E5F5 /* Protocol */,
 				8E9581A92C6915C30067E5F5 /* Extension */,
 				8E9581A12C68D7120067E5F5 /* Model */,
 				8E95819E2C68D22F0067E5F5 /* Network */,
@@ -151,6 +154,14 @@
 				8E9581AA2C6915CE0067E5F5 /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		8E9581B12C6A41300067E5F5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8E9581B22C6A41400067E5F5 /* CommonViewModel.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				8E9581972C68BC1E0067E5F5 /* SearchViewController.swift in Sources */,
 				8E95816A2C68A16D0067E5F5 /* ViewController.swift in Sources */,
 				8E95819D2C68CA8C0067E5F5 /* SearchViewModel.swift in Sources */,
+				8E9581B32C6A41400067E5F5 /* CommonViewModel.swift in Sources */,
 				8E9581662C68A16D0067E5F5 /* AppDelegate.swift in Sources */,
 				8E9581682C68A16D0067E5F5 /* SceneDelegate.swift in Sources */,
 				8E9581A62C6904450067E5F5 /* MusicDetailViewController.swift in Sources */,

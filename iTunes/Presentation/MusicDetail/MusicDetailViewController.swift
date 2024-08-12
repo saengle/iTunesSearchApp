@@ -14,12 +14,7 @@ class MusicDetailViewController: UIViewController {
     
     let detailView = MusicDetailView()
     
-    var titleName = String()
-    var albumPath = String()
-    var artistName = String()
-    var date = String()
-    var country = String()
-    var genre = String()
+    var myMusic: [Music] = []
     
     override func loadView() {
         view = detailView
@@ -27,6 +22,7 @@ class MusicDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = titleName
+        navigationItem.title = myMusic.first?.trackName
+        detailView.configureView(data: myMusic.first ?? Music(artistName: "", trackName: "", releaseDate: "", country: "", primaryGenreName: "", artworkUrl100: ""))
     }
 }

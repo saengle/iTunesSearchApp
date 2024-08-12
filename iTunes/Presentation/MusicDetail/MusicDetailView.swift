@@ -9,34 +9,34 @@ import UIKit
 
 import SnapKit
 
-class MusicDetailView: UIView {
+final class MusicDetailView: UIView {
     
-    let artistNameLabel = {
+    private let artistNameLabel = {
         let lb = UILabel()
         
         return lb
     }()
-    let trackNameLabel = {
+    private let trackNameLabel = {
         let lb = UILabel()
         
         return lb
     }()
-    let releaseDateLabel = {
+    private let releaseDateLabel = {
         let lb = UILabel()
         
         return lb
     }()
-    let artistCountryLabel = {
+    private let artistCountryLabel = {
         let lb = UILabel()
         
         return lb
     }()
-    let genreLabel = {
+    private let genreLabel = {
         let lb = UILabel()
         
         return lb
     }()
-    let albumImageView = {
+    private let albumImageView = {
         let iv = UIImageView()
         return iv
     }()
@@ -69,5 +69,34 @@ class MusicDetailView: UIView {
             make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(300)
         }
+        
+        trackNameLabel.snp.makeConstraints { make in
+            
+        }
+        
+        artistNameLabel.snp.makeConstraints { make in
+            
+        }
+        
+        releaseDateLabel.snp.makeConstraints { make in
+            
+        }
+        
+        artistCountryLabel.snp.makeConstraints { make in
+            
+        }
+        
+        genreLabel.snp.makeConstraints { make in
+            
+        }
+    }
+    
+    func configureView(data: Music) {
+        artistNameLabel.text = data.artistName
+        trackNameLabel.text = data.trackName
+        releaseDateLabel.text = data.releaseDate
+        artistCountryLabel.text = data.country
+        genreLabel.text = data.primaryGenreName
+        albumImageView.setMyImage(imagePath: data.artworkUrl100)
     }
 }

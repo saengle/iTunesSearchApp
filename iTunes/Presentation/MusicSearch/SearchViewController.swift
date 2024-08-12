@@ -46,7 +46,7 @@ extension SearchViewController {
         searchView.tableView.rx.modelSelected(Music.self)
                    .subscribe(with: self) { owner, data in
                        let vc = MusicDetailViewController()
-                       vc.titleName = data.trackName
+                       vc.myMusic = [data]
                        owner.navigationController?.pushViewController(vc, animated: true)
                    }.disposed(by: disposeBag)
     }
